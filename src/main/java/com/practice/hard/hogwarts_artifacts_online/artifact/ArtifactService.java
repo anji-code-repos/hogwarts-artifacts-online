@@ -1,6 +1,7 @@
 package com.practice.hard.hogwarts_artifacts_online.artifact;
 
 import com.practice.hard.hogwarts_artifacts_online.artifact.utils.IdWorker;
+import com.practice.hard.hogwarts_artifacts_online.system.exception.ObjectNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class ArtifactService {
 
     public Artifact findById(String artifactId){
         return this.artifactRepository.findById(artifactId).orElseThrow(
-                ()->new ArtifactNotFoundException(artifactId));
+                ()->new ObjectNotFoundException("artifact", artifactId));
     }
 
     public List<Artifact> findAllArtifacts(){
@@ -42,13 +43,13 @@ public class ArtifactService {
                     oldArtifact.setImageUrl(artifact.getImageUrl());
                     return this.artifactRepository.save(oldArtifact);
                 })
-                 .orElseThrow(()->new ArtifactNotFoundException(artifactId));
+                 .orElseThrow(()->new ObjectNotFoundException("artifact", artifactId));
     }
 
     public void deleteArtifact(String artifactId){
 
         this.artifactRepository.findById(artifactId)
-                .orElseThrow(()->new ArtifactNotFoundException(artifactId));
+                .orElseThrow(()->new ObjectNotFoundException("artifact", artifactId));
 
         this.artifactRepository.deleteById(artifactId);
     }
