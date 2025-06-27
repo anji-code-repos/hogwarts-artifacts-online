@@ -1,5 +1,6 @@
 package com.practice.hard.hogwarts_artifacts_online.wizard;
 
+import com.practice.hard.hogwarts_artifacts_online.artifact.Artifact;
 import com.practice.hard.hogwarts_artifacts_online.system.Result;
 import com.practice.hard.hogwarts_artifacts_online.system.StatusCode;
 import com.practice.hard.hogwarts_artifacts_online.wizard.converter.WizardDtoToWizardConverter;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("${api.endpoint.base-url}/wizards")
+@RequestMapping("${api.endpoint.baseurl}/wizards")
 public class WizardController {
 
     private final WizardService wizardService;
@@ -62,4 +63,9 @@ public class WizardController {
         return new Result(true, StatusCode.SUCCESS, "Delete Success", null);
     }
 
+    @PutMapping("/{wizardId}/artifacts/{artifactId}")
+    public Result assignArtifact(@PathVariable Integer wizardId, @PathVariable String artifactId){
+        this.wizardService.assignAnArtifactToAWizard(wizardId, artifactId);
+        return new Result(true, StatusCode.SUCCESS, "Artifact Assignment Success");
+    }
 }

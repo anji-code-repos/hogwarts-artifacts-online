@@ -9,4 +9,4 @@ spring:
     show-sql: true
 api:
   endpoint:
-    base-url: /api/v1
+    baseurl: /api/v1
