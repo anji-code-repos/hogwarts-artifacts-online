@@ -1,6 +1,5 @@
 package com.practice.hard.hogwarts_artifacts_online.artifact;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.practice.hard.hogwarts_artifacts_online.artifact.dto.ArtifactDto;
 import com.practice.hard.hogwarts_artifacts_online.system.StatusCode;
@@ -9,7 +8,6 @@ import org.hamcrest.Matchers;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
