@@ -4,11 +4,13 @@ import com.practice.hard.hogwarts_artifacts_online.artifact.Artifact;
 import com.practice.hard.hogwarts_artifacts_online.artifact.ArtifactRepository;
 import com.practice.hard.hogwarts_artifacts_online.artifact.utils.IdWorker;
 import com.practice.hard.hogwarts_artifacts_online.system.exception.ObjectNotFoundException;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class WizardService {
 
     private final WizardRepository wizardRepository;
