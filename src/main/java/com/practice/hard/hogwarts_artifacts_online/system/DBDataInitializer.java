@@ -2,6 +2,8 @@ package com.practice.hard.hogwarts_artifacts_online.system;
 
 import com.practice.hard.hogwarts_artifacts_online.artifact.Artifact;
 import com.practice.hard.hogwarts_artifacts_online.artifact.ArtifactRepository;
+import com.practice.hard.hogwarts_artifacts_online.hogwartsUser.HogwartsUser;
+import com.practice.hard.hogwarts_artifacts_online.hogwartsUser.UserRepository;
 import com.practice.hard.hogwarts_artifacts_online.wizard.Wizard;
 import com.practice.hard.hogwarts_artifacts_online.wizard.WizardRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -12,10 +14,12 @@ public class DBDataInitializer implements CommandLineRunner {
 
     private final ArtifactRepository artifactRepository;
     private final WizardRepository wizardRepository;
+    private final UserRepository userRepository;
 
-    public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository){
+    public DBDataInitializer(ArtifactRepository artifactRepository, WizardRepository wizardRepository, UserRepository userRepository){
         this.artifactRepository=artifactRepository;
         this.wizardRepository=wizardRepository;
+        this.userRepository= userRepository;
     }
 
     @Override
@@ -71,10 +75,32 @@ public class DBDataInitializer implements CommandLineRunner {
         w3.setName("Neville Longbottom");
         w3.addArtifact(a5);
 
-        wizardRepository.save(w1);
-        wizardRepository.save(w2);
-        wizardRepository.save(w3);
+        HogwartsUser hogwartsUser1= new HogwartsUser();
+        hogwartsUser1.setName("Harvard");
+        hogwartsUser1.setEnabled(true);
+        hogwartsUser1.setRoles("Admin roles");
+        hogwartsUser1.setPassword("Unity!");
+
+        HogwartsUser hogwartsUser2= new HogwartsUser();
+        hogwartsUser2.setName("Brown");
+        hogwartsUser2.setEnabled(true);
+        hogwartsUser2.setRoles("User roles");
+        hogwartsUser2.setPassword("Integrity!");
+
+        HogwartsUser hogwartsUser3= new HogwartsUser();
+        hogwartsUser3.setName("Ben");
+        hogwartsUser3.setEnabled(true);
+        hogwartsUser3.setRoles("User roles");
+        hogwartsUser3.setPassword("Togetherness!");
+
+        this.wizardRepository.save(w1);
+        this.wizardRepository.save(w2);
+        this.wizardRepository.save(w3);
 
         artifactRepository.save(a6);
+
+        this.userRepository.save(hogwartsUser1);
+        this.userRepository.save(hogwartsUser2);
+        this.userRepository.save(hogwartsUser3);
     }
 }
