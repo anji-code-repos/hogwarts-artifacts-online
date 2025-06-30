@@ -4,9 +4,12 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-
   jpa:
     show-sql: true
+  h2:
+    console:
+          enabled: true
+          path: /h2-console
 api:
   endpoint:
     baseurl: /api/v1

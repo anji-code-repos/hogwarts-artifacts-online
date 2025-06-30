@@ -97,7 +97,7 @@ public class DBDataInitializer implements CommandLineRunner {
         this.wizardRepository.save(w2);
         this.wizardRepository.save(w3);
 
-        artifactRepository.save(a6);
+        this.artifactRepository.save(a6);
 
         this.userRepository.save(hogwartsUser1);
         this.userRepository.save(hogwartsUser2);
